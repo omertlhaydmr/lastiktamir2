@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="tr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usta Lastik - Profesyonel Oto Lastik Tamir ve Satış Servisi</title>
+    <meta name="description" content="Oto lastik tamiri, lastik satışı, rot balans ayarı ve lastik oteli hizmetleri sunan profesyonel servis. Güvenliğiniz için buradayız.">
+    
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+    <meta property="og:title" content="Usta Lastik - Profesyonel Oto Lastik Servisi">
+    <meta property="og:description" content="Profesyonel lastik tamiri, değişimi ve rot balans hizmetleri ile yola güvenle devam edin.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.ustalastik.com.tr"> 
+    <meta property="og:image" content="https://www.ustalastik.com.tr/img/sosyal-medya-kapak.jpg"> 
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #3b82f6;
+            --primary-dark: #1d4ed8;
+            --secondary: #10b981;
+            --dark: #0f172a;
+            --darker: #0a0f1c;
+            --light: #f8fafc;
+            --gray: #64748b;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--dark);
+            color: var(--light);
+            overflow-x: hidden;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .card-gradient {
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.7) 0%, rgba(15, 23, 42, 0.9) 100%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .glow {
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+        }
+        
+        .glow-hover:hover {
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
+        }
+        
+        .floating {
+            animation: floating 6s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translate(0, 0px); }
+            50% { transform: translate(0, -15px); }
+            100% { transform: translate(0, 0px); }
+        }
+        
+        .pulse-slow {
+            animation: pulse 4s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .typing-animation {
+            overflow: hidden;
+            white-space: nowrap;
+            animation: typing 3.5s steps(40, end);
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        .service-icon {
+            transition: all 0.4s ease;
+            transform-style: preserve-3d;
+        }
+        
+        .service-card:hover .service-icon {
+            transform: rotateY(180deg) scale(1.1);
+        }
+        
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        .navbar-blur {
+            background-color: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+        }
+        
+        .gradient-border {
+            position: relative;
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.7) 0%, rgba(15, 23, 42, 0.9) 100%);
+            padding: 1px;
+            border-radius: 12px;
+        }
+        
+        .gradient-border::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 12px;
+            padding: 2px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+        
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            z-index: 9999;
+            transition: width 0.3s ease;
+        }
+        
+        @media (max-width: 768px) {
+            .gallery-item .gallery-overlay {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body class="gradient-bg">
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Navigation -->
+    <header class="fixed w-full z-50 transition-all duration-500 navbar-blur" id="navbar">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-20">
+            <a href="#" class="flex-shrink-0 flex items-center gap-3 group" aria-label="Ana Sayfa">
+                <div class="relative">
+                    <div class="h-12 w-12 rounded-full bg-gradient-to-r from-blue-500 to-emerald-500 flex items-center justify-center text-white font-bold text-lg glow group-hover:glow-hover transition-all duration-300">
+                        UL
+                    </div>
+                    <div class="absolute -top-1 -right-1 h-5 w-5 bg-emerald-500 rounded-full border-4 border-slate-900"></div>
+                </div>
+                <div>
+                    <span class="text-xl font-black text-white">Usta<span class="gradient-text">Lastik</span></span>
+                    <div class="text-xs text-gray-400 -mt-1">Profesyonel Lastik Servisi</div>
+                </div>
+            </a>
+            
+            <div class="hidden lg:flex space-x-8">
+                <a href="#home" class="text-gray-300 hover:text-white font-medium transition-colors relative group py-2">
+                    Ana Sayfa
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-emerald-500 transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="#about" class="text-gray-300 hover:text-white font-medium transition-colors relative group py-2">
+                    Hakkımızda
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-emerald-500 transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="#services" class="text-gray-300 hover:text-white font-medium transition-colors relative group py-2">
+                    Hizmetler
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-emerald-500 transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="#brands" class="text-gray-300 hover:text-white font-medium transition-colors relative group py-2">
+                    Markalar
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-emerald-500 transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="#gallery" class="text-gray-300 hover:text-white font-medium transition-colors relative group py-2">
+                    Galeri
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-emerald-500 transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="#contact" class="text-gray-300 hover:text-white font-medium transition-colors relative group py-2">
+                    İletişim
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-emerald-500 transition-all duration-300 group-hover:w-full"></span>
+                </a>
+            </div>
+            
+            <div class="hidden lg:block">
+                <a href="#contact" class="inline-flex items-center px-5 py-3 text-sm font-bold rounded-lg text-white bg-gradient-to-r from-blue-600 to-emerald-600 hover:from-blue-700 hover:to-emerald-700 transition-all transform hover:scale-105 glow-hover shadow-lg">
+                    <i class="fas fa-phone-alt mr-2"></i> Hemen Ara
+                </a>
+            </div>
+
+            <div class="lg:hidden flex items-center">
+                <button id="menu-button" class="text-gray-300 hover:text-white focus:outline-none transition-colors p-2 rounded-lg bg-slate-800/50">
+                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                    </svg>
+                </button>
+            </div>
+        </nav>
+
+        <div id="mobile-menu" class="lg:hidden hidden bg-slate-900/95 backdrop-blur-lg border-t border-slate-800 transition-all duration-300">
+            <div class="px-4 pt-2 pb-4 space-y-1">
+                <a href="#home" class="block px-3 py-3 rounded-lg text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800/50 transition-colors">Ana Sayfa</a>
+                <a href="#about" class="block px-3 py-3 rounded-lg text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800/50 transition-colors">Hakkımızda</a>
+                <a href="#services" class="block px-3 py-3 rounded-lg text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800/50 transition-colors">Hizmetler</a>
+                <a href="#brands" class="block px-3 py-3 rounded-lg text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800/50 transition-colors">Markalar</a>
+                <a href="#gallery" class="block px-3 py-3 rounded-lg text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800/50 transition-colors">Galeri</a>
+                <a href="#contact" class="block px-3 py-3 rounded-lg text-base font-medium text-gray-300 hover:text-white hover:bg-slate-800/50 transition-colors">İletişim</a>
+                <a href="#contact" class="block w-full text-left px-3 py-3 rounded-lg text-base font-bold text-white bg-gradient-to-r from-blue-600 to-emerald-600 transition-colors">
+                    <i class="fas fa-phone-alt mr-2"></i> Hemen Ara
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+            <div class="absolute inset-0 bg-black/60 z-10"></div>
+            <div class="absolute inset-0 parallax" style="background-image: url('img/hero-bg.jpg');"></div>
+            
+            <!-- Floating Elements -->
+            <div class="absolute top-20 left-10 w-20 h-20 rounded-full bg-blue-500/20 blur-xl floating"></div>
+            <div class="absolute bottom-40 right-20 w-32 h-32 rounded-full bg-emerald-500/20 blur-xl floating" style="animation-delay: 2s;"></div>
+            <div class="absolute top-1/3 right-1/4 w-16 h-16 rounded-full bg-purple-500/20 blur-xl floating" style="animation-delay: 4s;"></div>
+            
+            <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <div class="mb-8" data-aos="fade-up" data-aos-duration="1000">
+                    <h1 class="text-4xl md:text-6xl lg:text-7xl font-black mb-6 leading-tight">
+                        <span class="text-white">Yol Güvenliğiniz</span>
+                        <span class="block text-blue-400 text-2xl md:text-4xl lg:text-5xl mt-4">Bizim İşimiz</span>
+                    </h1>
+                    <p class="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mb-10" data-aos="fade-up" data-aos-delay="300">
+                        20 yıllık tecrübemizle lastik tamiri, satışı ve bakım hizmetlerinde profesyonel çözümler sunuyoruz.
+                    </p>
+                </div>
+                
+                <div class="flex flex-col sm:flex-row gap-5 justify-center items-center" data-aos="fade-up" data-aos-delay="500">
+                    <a href="#services" class="inline-flex items-center px-8 py-4 text-lg font-bold rounded-xl text-white bg-gradient-to-r from-blue-600 to-emerald-600 hover:from-blue-700 hover:to-emerald-700 transition-all transform hover:scale-105 glow-hover shadow-2xl">
+                        <i class="fas fa-tools mr-3"></i> Hizmetlerimizi Keşfedin
+                    </a>
+                    <a href="#contact" class="inline-flex items-center px-8 py-4 text-lg font-bold rounded-xl border-2 border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white transition-all transform hover:scale-105">
+                        <i class="fas fa-comment-alt mr-3"></i> Ücretsiz Danışmanlık
+                    </a>
+                </div>
+                
+                <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto" data-aos="fade-up" data-aos-delay="700">
+                    <div class="text-center p-4">
+                        <div class="text-3xl font-black text-white mb-2">20+</div>
+                        <div class="text-sm text-gray-400">Yıllık Deneyim</div>
+                    </div>
+                    <div class="text-center p-4">
+                        <div class="text-3xl font-black text-white mb-2">10.000+</div>
+                        <div class="text-sm text-gray-400">Mutlu Müşteri</div>
+                    </div>
+                    <div class="text-center p-4">
+                        <div class="text-3xl font-black text-white mb-2">50+</div>
+                        <div class="text-sm text-gray-400">Marka</div>
+                    </div>
+                    <div class="text-center p-4">
+                        <div class="text-3xl font-black text-white mb-2">7/24</div>
+                        <div class="text-sm text-gray-400">Acil Servis</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Scroll Indicator -->
+            <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20 animate-bounce">
+                <a href="#about" class="text-white hover:text-blue-400 transition-colors">
+                    <i class="fas fa-chevron-down text-2xl"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-20 relative overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col lg:flex-row items-center gap-16">
+                    <div class="w-full lg:w-1/2" data-aos="fade-right" data-aos-duration="800">
+                        <div class="gradient-border rounded-2xl overflow-hidden pulse-slow">
+                            <img src="img/hakkimizda-ekip.jpg" alt="Usta Lastik Ekibi" class="w-full h-auto object-cover">
+                        </div>
+                    </div>
+                    <div class="w-full lg:w-1/2" data-aos="fade-left" data-aos-duration="800">
+                        <h2 class="text-3xl lg:text-4xl font-black mb-6">
+                            <span class="text-white">20 Yıllık </span>
+                            <span class="gradient-text">Tecrübe ve Güven</span>
+                        </h2>
+                        <p class="text-lg text-gray-300 mb-6">
+                            Usta Lastik olarak, 20 yılı aşkın süredir otomotiv sektöründe lastik tamiri ve satışı konusunda müşterilerimize dürüst ve kaliteli hizmet sunmaktayız. 
+                            Kurulduğumuz günden bu yana önceliğimiz her zaman müşteri memnuniyeti ve yol güvenliği olmuştur.
+                        </p>
+                        <p class="text-lg text-gray-300 mb-8">
+                            Uzman ekibimiz, en son teknolojiye sahip ekipmanlarımızla aracınız için en doğru çözümü sunmak için çalışır. Sadece bir lastikçi değil, yoldaki güvenilir ortağınız olmayı hedefliyoruz.
+                        </p>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+                            <div class="flex items-start gap-4">
+                                <div class="flex-shrink-0 h-12 w-12 rounded-xl bg-blue-500/20 flex items-center justify-center text-blue-400">
+                                    <i class="fas fa-award text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-bold text-white mb-1">Kalite Garantisi</h4>
+                                    <p class="text-gray-400">Tüm işlemlerde %100 müşteri memnuniyeti</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div class="flex-shrink-0 h-12 w-12 rounded-xl bg-emerald-500/20 flex items-center justify-center text-emerald-400">
+                                    <i class="fas fa-clock text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-bold text-white mb-1">Hızlı Servis</h4>
+                                    <p class="text-gray-400">Acil durumlarda 7/24 hizmet</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <a href="#contact" class="inline-flex items-center px-6 py-3 text-base font-bold rounded-lg text-white bg-gradient-to-r from-blue-600 to-emerald-600 hover:from-blue-700 hover:to-emerald-700 transition-all transform hover:scale-105 glow-hover">
+                            <i class="fas fa-phone-alt mr-2"></i> Hemen Randevu Alın
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="py-20 relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-slate-900 to-transparent z-0"></div>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center mb-16" data-aos="fade-up" data-aos-duration="800">
+                    <h2 class="text-3xl lg:text-4xl font-black mb-4">
+                        <span class="text-white">Profesyonel </span>
+                        <span class="gradient-text">Hizmetlerimiz</span>
+                    </h2>
+                    <p class="text-xl text-gray-400 max-w-3xl mx-auto">Lastik ihtiyaçlarınız için kapsamlı çözümler sunuyoruz</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Service 1 -->
+                    <div class="service-card card-gradient rounded-2xl p-8 transition-all duration-500 hover:-translate-y-2 glow-hover" data-aos="fade-up" data-aos-delay="100">
+                        <div class="relative mb-6">
+                            <div class="service-icon h-20 w-20 rounded-2xl bg-blue-500/20 flex items-center justify-center text-blue-400 text-3xl mx-auto">
+                              <i class="fas fa-circle"></i>
+                                </div>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4 text-center">Lastik Satışı</h3>
+                        <p class="text-gray-400 text-center">Her bütçeye ve araca uygun, önde gelen markaların yazlık, kışlık ve 4 mevsim lastik modelleri.</p>
+                    </div>
+                    
+                    <!-- Service 2 -->
+                    <div class="service-card card-gradient rounded-2xl p-8 transition-all duration-500 hover:-translate-y-2 glow-hover" data-aos="fade-up" data-aos-delay="200">
+                        <div class="relative mb-6">
+                            <div class="service-icon h-20 w-20 rounded-2xl bg-emerald-500/20 flex items-center justify-center text-emerald-400 text-3xl mx-auto">
+                                <i class="fas fa-tools"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4 text-center">Lastik Tamiri</h3>
+                        <p class="text-gray-400 text-center">Patlak lastik tamiri, yanak onarımı ve sibop değişimi gibi işlemleri profesyonel ekipmanlarla yapıyoruz.</p>
+                    </div>
+                    
+                    <!-- Service 3 -->
+                    <div class="service-card card-gradient rounded-2xl p-8 transition-all duration-500 hover:-translate-y-2 glow-hover" data-aos="fade-up" data-aos-delay="300">
+                        <div class="relative mb-6">
+                            <div class="service-icon h-20 w-20 rounded-2xl bg-purple-500/20 flex items-center justify-center text-purple-400 text-3xl mx-auto">
+                                <i class="fas fa-cogs"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4 text-center">Rot & Balans Ayarı</h3>
+                        <p class="text-gray-400 text-center">Son teknoloji cihazlarımızla aracınızın rot ve balans ayarlarını yaparak sürüş konforunuzu artırıyoruz.</p>
+                    </div>
+                    
+                    <!-- Service 4 -->
+                    <div class="service-card card-gradient rounded-2xl p-8 transition-all duration-500 hover:-translate-y-2 glow-hover" data-aos="fade-up" data-aos-delay="400">
+                        <div class="relative mb-6">
+                            <div class="service-icon h-20 w-20 rounded-2xl bg-amber-500/20 flex items-center justify-center text-amber-400 text-3xl mx-auto">
+                                <i class="fas fa-wrench"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4 text-center">Jant Düzeltme</h3>
+                        <p class="text-gray-400 text-center">Eğilmiş, çatlamış veya hasar görmüş jantlarınızı orijinal formuna getirerek güvenliğinizi sağlıyoruz.</p>
+                    </div>
+                    
+                    <!-- Service 5 -->
+                    <div class="service-card card-gradient rounded-2xl p-8 transition-all duration-500 hover:-translate-y-2 glow-hover" data-aos="fade-up" data-aos-delay="500">
+                        <div class="relative mb-6">
+                            <div class="service-icon h-20 w-20 rounded-2xl bg-rose-500/20 flex items-center justify-center text-rose-400 text-3xl mx-auto">
+                                <i class="fas fa-hotel"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4 text-center">Lastik Oteli</h3>
+                        <p class="text-gray-400 text-center">Mevsimlik lastiklerinizi ideal koşullarda saklayarak ömürlerini uzatıyoruz. Vakti geldiğinde biz değiştiriyoruz.</p>
+                    </div>
+                    
+                    <!-- Service 6 -->
+                    <div class="service-card card-gradient rounded-2xl p-8 transition-all duration-500 hover:-translate-y-2 glow-hover" data-aos="fade-up" data-aos-delay="600">
+                        <div class="relative mb-6">
+                            <div class="service-icon h-20 w-20 rounded-2xl bg-cyan-500/20 flex items-center justify-center text-cyan-400 text-3xl mx-auto">
+                                <i class="fas fa-car-battery"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4 text-center">Akü Satışı ve Değişimi</h3>
+                        <p class="text-gray-400 text-center">Aracınız için en uygun, garantili akü seçenekleri. Ücretsiz montaj ve eski akü alım hizmeti.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Brands Section -->
+        <section id="brands" class="py-20 relative overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16" data-aos="fade-up" data-aos-duration="800">
+                    <h2 class="text-3xl lg:text-4xl font-black mb-4">
+                        <span class="text-white">Anlaşmalı </span>
+                        <span class="gradient-text">Markalar</span>
+                    </h2>
+                    <p class="text-xl text-gray-400 max-w-3xl mx-auto">Dünyanın önde gelen lastik markalarının yetkili satıcısıyız</p>
+                </div>
+                
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8 items-center" data-aos="fade-up" data-aos-duration="1000">
+                    <div class="brand-logo bg-white rounded-xl p-6 flex items-center justify-center h-24 transition-all duration-300 hover:bg-gray-100 hover:-translate-y-2">
+                        <img src="img/markalar/michelin.png" alt="Michelin Logosu" class="max-h-12 object-contain">
+                    </div>
+                    <div class="brand-logo bg-white rounded-xl p-6 flex items-center justify-center h-24 transition-all duration-300 hover:bg-gray-100 hover:-translate-y-2">
+                        <img src="img/markalar/pirelli.png" alt="Pirelli Logosu" class="max-h-12 object-contain">
+                    </div>
+                    <div class="brand-logo bg-white rounded-xl p-6 flex items-center justify-center h-24 transition-all duration-300 hover:bg-gray-100 hover:-translate-y-2">
+                        <img src="img/markalar/goodyear.png" alt="Goodyear Logosu" class="max-h-12 object-contain">
+                    </div>
+                    <div class="brand-logo bg-white rounded-xl p-6 flex items-center justify-center h-24 transition-all duration-300 hover:bg-gray-100 hover:-translate-y-2">
+                        <img src="img/markalar/bridgestone.png" alt="Bridgestone Logosu" class="max-h-12 object-contain">
+                    </div>
+                    <div class="brand-logo bg-white rounded-xl p-6 flex items-center justify-center h-24 transition-all duration-300 hover:bg-gray-100 hover:-translate-y-2">
+                        <img src="img/markalar/continental.png" alt="Continental Logosu" class="max-h-12 object-contain">
+                    </div>
+                    <div class="brand-logo bg-white rounded-xl p-6 flex items-center justify-center h-24 transition-all duration-300 hover:bg-gray-100 hover:-translate-y-2">
+                        <img src="img/markalar/lassa.png" alt="Lassa Logosu" class="max-h-12 object-contain">
+                    </div>
+                    <div class="brand-logo bg-white rounded-xl p-6 flex items-center justify-center h-24 transition-all duration-300 hover:bg-gray-100 hover:-translate-y-2">
+                        <img src="img/markalar/petlas.png" alt="Petlas Logosu" class="max-h-12 object-contain">
+                    </div>
+                    <div class="brand-logo bg-white rounded-xl p-6 flex items-center justify-center h-24 transition-all duration-300 hover:bg-gray-100 hover:-translate-y-2">
+                        <img src="img/markalar/hankook.png" alt="Hankook Logosu" class="max-h-12 object-contain">
+                    </div>
+                    <div class="brand-logo bg-white rounded-xl p-6 flex items-center justify-center h-24 transition-all duration-300 hover:bg-gray-100 hover:-translate-y-2">
+                        <img src="img/markalar/nokian.png" alt="Nokian Logosu" class="max-h-12 object-contain">
+                    </div>
+                    <div class="brand-logo bg-white rounded-xl p-6 flex items-center justify-center h-24 transition-all duration-300 hover:bg-gray-100 hover:-translate-y-2">
+                        <img src="img/markalar/varta.png" alt="Varta Akü Logosu" class="max-h-12 object-contain">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="py-20 relative overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16" data-aos="fade-up" data-aos-duration="800">
+                    <h2 class="text-3xl lg:text-4xl font-black mb-4">
+                        <span class="text-white">Çalışmalarımızdan </span>
+                        <span class="gradient-text">Kareler</span>
+                    </h2>
+                    <p class="text-xl text-gray-400 max-w-3xl mx-auto">Servisimizden ve yaptığımız işlerden örnekler</p>
+                </div>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="gallery-item rounded-2xl overflow-hidden relative group">
+                        <img src="img/galeri-servis-alani.jpg" alt="Servis Alanı" class="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="gallery-overlay absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-6">
+                            <div>
+                                <h3 class="text-xl font-bold text-white mb-2">Servis Alanı</h3>
+                                <p class="text-gray-300">Modern ve donanımlı servis alanımız</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item rounded-2xl overflow-hidden relative group">
+                        <img src="img/galeri-rot-balans.jpg" alt="Rot Balans Cihazı" class="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="gallery-overlay absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-6">
+                            <div>
+                                <h3 class="text-xl font-bold text-white mb-2">Rot Balans Cihazı</h3>
+                                <p class="text-gray-300">Son teknoloji rot balans cihazımız</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item rounded-2xl overflow-hidden relative group">
+                        <img src="img/galeri-lastik-degisim.jpg" alt="Lastik Değişimi" class="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="gallery-overlay absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-6">
+                            <div>
+                                <h3 class="text-xl font-bold text-white mb-2">Lastik Değişimi</h3>
+                                <p class="text-gray-300">Profesyonel lastik değişim hizmeti</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item rounded-2xl overflow-hidden relative group">
+                        <img src="img/galeri-lastik-oteli.jpg" alt="Lastik Oteli" class="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="gallery-overlay absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-6">
+                            <div>
+                                <h3 class="text-xl font-bold text-white mb-2">Lastik Oteli</h3>
+                                <p class="text-gray-300">Lastikleriniz için güvenli depolama</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item rounded-2xl overflow-hidden relative group">
+                        <img src="img/galeri-bekleme-alani.jpg" alt="Müşteri Bekleme Alanı" class="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="gallery-overlay absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-6">
+                            <div>
+                                <h3 class="text-xl font-bold text-white mb-2">Müşteri Bekleme Alanı</h3>
+                                <p class="text-gray-300">Konforlu müşteri bekleme alanımız</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item rounded-2xl overflow-hidden relative group">
+                        <img src="img/galeri-stoklar.jpg" alt="Lastik Stokları" class="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="gallery-overlay absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-6">
+                            <div>
+                                <h3 class="text-xl font-bold text-white mb-2">Lastik Stokları</h3>
+                                <p class="text-gray-300">Geniş lastik stok yelpazemiz</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-slate-900 to-transparent z-0"></div>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center mb-16" data-aos="fade-up" data-aos-duration="800">
+                    <h2 class="text-3xl lg:text-4xl font-black mb-4">
+                        <span class="text-white">Bize </span>
+                        <span class="gradient-text">Ulaşın</span>
+                    </h2>
+                    <p class="text-xl text-gray-400 max-w-3xl mx-auto">Sorularınız için bize ulaşın veya servisimizi ziyaret edin</p>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+                    <div class="card-gradient rounded-2xl p-8" data-aos="fade-right" data-aos-duration="800">
+                        <h3 class="text-2xl font-bold text-white mb-6">İletişim Bilgilerimiz</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start gap-4">
+                                <div class="flex-shrink-0 h-12 w-12 rounded-xl bg-blue-500/20 flex items-center justify-center text-blue-400">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-semibold text-white mb-1">Adres</h4>
+                                    <p class="text-gray-400">Örnek Mah, Sanayi Sitesi, 123. Sk. No:45, 34000, Ataşehir/İstanbul</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div class="flex-shrink-0 h-12 w-12 rounded-xl bg-emerald-500/20 flex items-center justify-center text-emerald-400">
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-semibold text-white mb-1">Telefon</h4>
+                                    <a href="tel:+902161234567" class="text-gray-400 hover:text-white transition-colors block">0 (216) 123 45 67</a>
+                                    <a href="tel:+905551234567" class="text-gray-400 hover:text-white transition-colors">0 (555) 123 45 67 (Acil)</a>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div class="flex-shrink-0 h-12 w-12 rounded-xl bg-purple-500/20 flex items-center justify-center text-purple-400">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-semibold text-white mb-1">Email</h4>
+                                    <a href="mailto:info@ustalastik.com.tr" class="text-gray-400 hover:text-white transition-colors">info@ustalastik.com.tr</a>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div class="flex-shrink-0 h-12 w-12 rounded-xl bg-amber-500/20 flex items-center justify-center text-amber-400">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-semibold text-white mb-1">Çalışma Saatleri</h4>
+                                    <p class="text-gray-400">Hafta İçi: 08:30 - 19:00</p>
+                                    <p class="text-gray-400">Cumartesi: 08:30 - 17:00</p>
+                                    <p class="text-gray-400">Pazar: Kapalı</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8 pt-6 border-t border-slate-700">
+                            <h4 class="text-lg font-semibold text-white mb-4">Sosyal Medya</h4>
+                            <div class="flex space-x-4">
+                                <a href="#" class="h-10 w-10 rounded-lg bg-slate-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-blue-600 transition-all">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="#" class="h-10 w-10 rounded-lg bg-slate-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-pink-600 transition-all">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="#" class="h-10 w-10 rounded-lg bg-slate-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-blue-400 transition-all">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#" class="h-10 w-10 rounded-lg bg-slate-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-red-600 transition-all">
+                                    <i class="fab fa-youtube"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="w-full h-96 lg:h-full rounded-2xl shadow-2xl overflow-hidden" data-aos="fade-left" data-aos-duration="800">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12042.82583204996!2d29.12461935!3d40.99929265!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cac04d82f7e035%3A0x8f7d5d4d3e41ab19!2zQXTFn2VoaXIgU2FuYXlpIFNpdGVzaSwgS2F5xLFzZGHEn8SxLCBCYXLEscWfIENkLiwgMzQ3NTIgQXTFn2VoaXIgSGl6bWV0IEFsYW7EsS9BdGHFn2VoaXIvxLBzdGFuYnVs!5e0!3m2!1str!2str!4v1699477817757!5m2!1str!2str" 
+                            width="100%" 
+                            height="100%" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 border-t border-slate-800 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <h3 class="text-2xl font-black text-white mb-4">Usta<span class="gradient-text">Lastik</span></h3>
+                    <p class="text-gray-400 mb-6">Yol güvenliğiniz bizim önceliğimiz. 20 yıllık tecrübe ile hizmetinizdeyiz.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="h-10 w-10 rounded-lg bg-slate-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-blue-600 transition-all">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="h-10 w-10 rounded-lg bg-slate-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-pink-600 transition-all">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="h-10 w-10 rounded-lg bg-slate-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-blue-400 transition-all">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-4">Hızlı Linkler</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-white transition-colors">Ana Sayfa</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition-colors">Hakkımızda</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition-colors">Hizmetler</a></li>
+                        <li><a href="#brands" class="text-gray-400 hover:text-white transition-colors">Markalar</a></li>
+                        <li><a href="#gallery" class="text-gray-400 hover:text-white transition-colors">Galeri</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-4">Hizmetlerimiz</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition-colors">Lastik Satışı</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition-colors">Lastik Tamiri</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition-colors">Rot & Balans Ayarı</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition-colors">Jant Düzeltme</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition-colors">Lastik Oteli</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-4">İletişim</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-start gap-2">
+                            <i class="fas fa-map-marker-alt text-gray-400 mt-1 flex-shrink-0"></i>
+                            <span class="text-gray-400">Örnek Mah, Sanayi Sitesi, 123. Sk. No:45, Ataşehir/İstanbul</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-phone-alt text-gray-400 flex-shrink-0"></i>
+                            <span class="text-gray-400">0 (216) 123 45 67</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-envelope text-gray-400 flex-shrink-0"></i>
+                            <span class="text-gray-400">info@ustalastik.com.tr</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-slate-800 text-center">
+                <p class="text-gray-500">© <span id="current-year"></span> Usta Lastik. Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Action Buttons -->
+    <div class="fixed bottom-6 right-6 z-50 flex flex-col gap-3">
+        <a href="https://wa.me/905551234567?text=Merhaba,%20web%20sitenizden%20ulaşıyorum.%20Lastik%20hizmetleriniz%20hakkında%20bilgi%20almak%20istiyorum." 
+            target="_blank" 
+            aria-label="WhatsApp üzerinden ulaşın"
+            class="bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-2xl transition-all transform hover:scale-110 duration-300 flex items-center justify-center glow-hover animate-pulse">
+            <i class="fab fa-whatsapp text-2xl"></i>
+        </a>
+
+        <a href="tel:+905551234567" 
+            aria-label="Telefonla arayın"
+            class="bg-blue-600 hover:bg-blue-700 text-white p-4 rounded-full shadow-2xl transition-all transform hover:scale-110 duration-300 flex items-center justify-center glow-hover">
+            <i class="fas fa-phone-alt text-xl"></i>
+        </a>
+        
+        <button id="back-to-top" 
+            aria-label="Yukarı çık"
+            class="bg-slate-800 hover:bg-slate-700 text-white p-4 rounded-full shadow-2xl transition-all transform hover:scale-110 duration-300 flex items-center justify-center">
+            <i class="fas fa-chevron-up text-xl"></i>
+        </button>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // AOS animasyonlarını başlat
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+
+        // Mobil menü açma/kapama
+        const menuButton = document.getElementById('menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Menüdeki linklere tıklayınca menüyü kapat
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Footer'daki yılı otomatik güncelle
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Scroll ile navbar efektini uygula
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('navbar-blur');
+            } else {
+                navbar.classList.remove('navbar-blur');
+            }
+            
+            // Scroll progress bar
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById("scrollProgress").style.width = scrolled + "%";
+        });
+
+        // Yukarı çık butonu
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Sayfa yükleme animasyonu
+        window.addEventListener('load', function() {
+            document.body.classList.add('loaded');
+        });
+    </script>
+</body>
+</html>
